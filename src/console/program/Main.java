@@ -8,7 +8,12 @@ public class Main {
 	public static void main(String args[]) {
 		System.out.println("Welcome to MyCar! ");
 		MyCar mycar = new MyCar("My Car!");
-		mycar.run();
-	}
 
+		String csvFile = "Fleet.csv";
+
+		mycar.initMyCar(csvFile);
+
+		mycar.run();
+
+	}
 }
