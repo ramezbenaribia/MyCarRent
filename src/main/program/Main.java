@@ -1,4 +1,4 @@
-package console.program;
+package main.program;
 
 /**
  * The Main class is the entry point of the sample console program.

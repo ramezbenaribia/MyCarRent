@@ -1,4 +1,4 @@
-package console.program;
+package main.program;
 
 public class Vehicle {
 

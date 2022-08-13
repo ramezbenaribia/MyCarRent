@@ -1,4 +1,6 @@
-package console.program;
+package main.program;
+
+import java.util.regex.*;
 
 public class Validators {
     public static final String delimiter = "/";
@@ -68,4 +70,27 @@ public class Validators {
         return true;
 
     }
+
+    public static boolean validateName(String name) {
+        boolean valid = Pattern.matches(".*", name);
+        return valid;
+    }
+
+    public static boolean validateEmail(String email) {
+        boolean valid = Pattern.matches(".*@.*", email);
+        if (!valid) {
+            System.out.println("Please provide a valid email like this (yourname@rmit.edu.au) ");
+        }
+        return valid;
+    }
+
+    public static boolean validateNumber(String number) {
+
+        boolean valid = Pattern.matches("[1-9][0-9]*", number);
+        if (!valid) {
+            System.out.println("Please provide a valid number ");
+        }
+        return valid;
+    }
+
 }

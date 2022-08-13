@@ -1,9 +1,7 @@
-package console.program;
+package main.program;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * The MyCar class provides the functionality needed to manage orders and
@@ -362,8 +360,91 @@ public class MyCar {
 		String clientSurname;
 		String clientEmail;
 		String clientPassengersChoice;
+		boolean exit = false;
 
 		System.out.println(banner + "\n" + "> Provide personal information" + "\n" + banner);
+
+		do {
+			System.out.print("Please provide your given name: ");
+			clientName = readUserInput();
+
+		} while (!Validators.validateName(clientName));
+		vehicle.setClientName(clientName);
+
+		do {
+			System.out.print("Please provide your surname: ");
+			clientSurname = readUserInput();
+
+		} while (!Validators.validateName(clientSurname));
+		vehicle.setClientSurname(clientSurname);
+
+		do {
+			System.out.print("Please provide your email address: ");
+			clientEmail = readUserInput();
+
+		} while (!Validators.validateEmail(clientEmail));
+		vehicle.setClientEmail(clientEmail);
+
+		do {
+			System.out.print("Please provide number of passengers: ");
+			clientPassengersChoice = readUserInput();
+
+		} while (!Validators.validateNumber(clientPassengersChoice));
+
+		vehicle.setClientPassengersChoice(clientPassengersChoice);
+		System.out.print("Confirm and pay (Y/N): ");
+
+		do {
+			String stringInput = readUserInput();
+
+			char input = stringInput.charAt(0);
+
+			switch (input) {
+				case 'Y':
+					this.printreceipt(vehicle);
+					break;
+				case 'y':
+					this.printreceipt(vehicle);
+
+					break;
+				case 'N':
+					this.rentCar(vehicle);
+					break;
+
+				case 'n':
+					this.rentCar(vehicle);
+					break;
+				default:
+					System.out.println("Please select a valid menu option.");
+					break;
+			}
+
+		} while (!exit);
+
+	}
+
+	/**
+	 * The method to print receipt of the rented vehicle .
+	 */
+
+	public void printreceipt(RentedVehicle vehicle) {
+
+		System.out.println(banner + "\n"
+				+ ">  Congratulations! Your vehicle is booked. A receipt has been sent to your email. We will soon be in touch before your pick-up date."
+				+ "\n" + banner);
+
+		System.out.printf("%-25s  %s %s %n", "Name:", vehicle.getClientName(), vehicle.getClientSurname());
+		System.out.printf("%-25s  %s %n", "Email:", vehicle.getClientEmail());
+		System.out.printf("%-25s  %s %s %s with %s seats %n", "Your vehicle:",
+				vehicle.getBrand(),
+				vehicle.getModel(),
+				vehicle.getType(),
+				vehicle.getSeatsNumber());
+		System.out.printf("%-25s  %s%n", "Number of passengers:", vehicle.getClientPassengersChoice());
+		System.out.printf("%-25s  %s%n", "Pick-up date: ", vehicle.getPickUpDate());
+		System.out.printf("%-25s  %s%n", "Return date: ", vehicle.getReturnDate());
+		System.out.printf("%-25s  $%.2f %n", "Total payment: ", vehicle.getTotal());
+		System.exit(1);
 
 	}
 
@@ -373,25 +454,25 @@ public class MyCar {
 	public void showVehicleDetails(RentedVehicle vehicle) {
 
 		System.out.println(banner + "\n" + ">  Show vehicle details" + "\n" + banner);
-		System.out.printf("%-20s  %s%n", "Vehicle:", vehicle.getVehicleID());
-		System.out.printf("%-20s  %s%n", "Brand:", vehicle.getBrand());
-		System.out.printf("%-20s  %s%n", "Model:", vehicle.getModel());
-		System.out.printf("%-20s  %s%n", "Type of vehicle:", vehicle.getType());
-		System.out.printf("%-20s  %s%n", "Year of manufacture:", vehicle.getManufactureYear());
-		System.out.printf("%-20s  %s%n", "No. Of seats:", vehicle.getSeatsNumber());
-		System.out.printf("%-20s  %s%n", "Colour:", vehicle.getColor());
-		System.out.printf("%-20s  $%-10.2f ($%.2f * %s days) %n", "Rental:", vehicle.getRental(),
+		System.out.printf("%-25s  %s%n", "Vehicle:", vehicle.getVehicleID());
+		System.out.printf("%-25s  %s%n", "Brand:", vehicle.getBrand());
+		System.out.printf("%-25s  %s%n", "Model:", vehicle.getModel());
+		System.out.printf("%-25s  %s%n", "Type of vehicle:", vehicle.getType());
+		System.out.printf("%-25s  %s%n", "Year of manufacture:", vehicle.getManufactureYear());
+		System.out.printf("%-25s  %s%n", "No. Of seats:", vehicle.getSeatsNumber());
+		System.out.printf("%-25s  %s%n", "Colour:", vehicle.getColor());
+		System.out.printf("%-25s  $%-10.2f ($%.2f * %s days) %n", "Rental:", vehicle.getRental(),
 				vehicle.getRentalPerDay(), vehicle.getRentDays());
-		System.out.printf("%-20s  $%-10.2f ", "Discounted price:", vehicle.getDiscountedPrice());
+		System.out.printf("%-25s  $%-10.2f ", "Discounted price:", vehicle.getDiscountedPrice());
 		if (vehicle.getDiscountedPrice() == vehicle.getRental()) {
 			System.out.printf("(Discount is not applicable) %n");
 		} else {
 			System.out.println("(" + vehicle.getDiscount() + "% Discount)");
 		}
-		System.out.printf("%-20s  $%-10.2f ($%.2f * %s days) %n", "Insurance:", vehicle.getInsurance(),
+		System.out.printf("%-25s  $%-10.2f ($%.2f * %s days) %n", "Insurance:", vehicle.getInsurance(),
 				vehicle.getInsurancePerDay(), vehicle.getRentDays());
-		System.out.printf("%-20s  $%-10.2f %n", "Service fee:", vehicle.getServiceFee());
-		System.out.printf("%-20s  $%-10.2f %n", "Total:", vehicle.getTotal());
+		System.out.printf("%-25s  $%-10.2f %n", "Service fee:", vehicle.getServiceFee());
+		System.out.printf("%-25s  $%-10.2f %n", "Total:", vehicle.getTotal());
 
 	}
 }

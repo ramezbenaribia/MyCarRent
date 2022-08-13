@@ -1,4 +1,4 @@
-package console.program;
+package main.program;
 
 import java.text.*;
 import java.util.*;
@@ -33,13 +33,8 @@ public class RentedVehicle extends Vehicle {
                 vehicle.getServiceFee(),
                 vehicle.getDiscount());
 
-        String[] returnDateSplited = returnDate.split(delimiter);
-        int returnDay = Integer.valueOf(returnDateSplited[0]);
-        int returnMonth = Integer.valueOf(returnDateSplited[1]);
-        int returnYear = Integer.valueOf(returnDateSplited[2]);
-
-        this.pickUpDate = pickUpDate;
-        this.returnDate = returnDate;
+        this.pickUpDate = pickUpDate.replace("/", "-");
+        this.returnDate = returnDate.replace("/", "-");
         this.rentDays = this.calculateRentDays(pickUpDate, returnDate);
         this.rental = this.getRentalPerDay() * this.rentDays;
 
@@ -141,4 +136,29 @@ public class RentedVehicle extends Vehicle {
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }
+
+    public String getClientSurname() {
+        return clientSurname;
+    }
+
+    public void setClientSurname(String clientSurname) {
+        this.clientSurname = clientSurname;
+    }
+
+    public String getClientEmail() {
+        return clientEmail;
+    }
+
+    public void setClientEmail(String clientEmail) {
+        this.clientEmail = clientEmail;
+    }
+
+    public String getClientPassengersChoice() {
+        return clientPassengersChoice;
+    }
+
+    public void setClientPassengersChoice(String clientPassengersChoice) {
+        this.clientPassengersChoice = clientPassengersChoice;
+    }
+
 }
