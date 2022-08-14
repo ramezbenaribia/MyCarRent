@@ -1,4 +1,4 @@
-package main.program;
+package com.myCar;
 
 /**
  * The Main class is the entry point of the sample console program.

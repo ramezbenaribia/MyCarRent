@@ -1,4 +1,4 @@
-package main.program;
+package com.myCar;
 
 import java.util.Scanner;
 import java.util.ArrayList;

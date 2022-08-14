@@ -1,4 +1,4 @@
-package main.program;
+package com.myCar;
 
 import java.text.*;
 import java.util.*;
@@ -38,14 +38,8 @@ public class RentedVehicle extends Vehicle {
         this.rentDays = this.calculateRentDays(pickUpDate, returnDate);
         this.rental = this.getRentalPerDay() * this.rentDays;
 
-        if (this.getDiscount().equals("N/A")) {
-            this.discountedPrice = this.rental;
-        } else if (this.rentDays > 7) {
-            int discount = Integer.valueOf(this.getDiscount());
-            this.discountedPrice = this.getRentalPerDay() * (100 - discount) / 100 * this.rentDays;
-        } else {
-            this.discountedPrice = this.rental;
-        }
+        this.discountedPrice = this.calculateDiscountedPrice();
+
         this.insurance = this.getInsurancePerDay() * this.rentDays;
         this.total = this.discountedPrice + this.insurance + this.getServiceFee();
 
@@ -71,6 +65,24 @@ public class RentedVehicle extends Vehicle {
         }
 
         return rentDays + 1;
+    }
+
+    /*
+     * This function is responsable for calculating discounted price of the car
+     */
+    public float calculateDiscountedPrice() {
+
+        float discountedPrice = 0;
+        if (this.getDiscount().equals("N/A")) {
+            discountedPrice = this.rental;
+        } else if (this.rentDays > 7) {
+            int discount = Integer.valueOf(this.getDiscount());
+            discountedPrice = this.getRentalPerDay() * (100 - discount) / 100 * this.rentDays;
+        } else {
+            discountedPrice = this.rental;
+        }
+
+        return discountedPrice;
     }
 
     public String getPickUpDate() {

@@ -1,4 +1,4 @@
-package main.program;
+package com.myCar;
 
 public class Vehicle {
 
