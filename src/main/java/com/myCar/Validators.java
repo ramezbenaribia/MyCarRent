@@ -1,9 +1,11 @@
 package com.myCar;
 
+import java.util.Date;
 import java.util.regex.*;
 
 public class Validators {
     public static final String delimiter = "/";
+    public static final Date today = new Date();
 
     public static boolean validateDate(String date) {
 

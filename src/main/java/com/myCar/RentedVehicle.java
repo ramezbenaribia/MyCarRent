@@ -36,12 +36,12 @@ public class RentedVehicle extends Vehicle {
         this.pickUpDate = pickUpDate.replace("/", "-");
         this.returnDate = returnDate.replace("/", "-");
         this.rentDays = this.calculateRentDays(pickUpDate, returnDate);
-        this.rental = this.getRentalPerDay() * this.rentDays;
+        this.rental = this.calculateRental();
 
         this.discountedPrice = this.calculateDiscountedPrice();
 
-        this.insurance = this.getInsurancePerDay() * this.rentDays;
-        this.total = this.discountedPrice + this.insurance + this.getServiceFee();
+        this.insurance = this.calculateInsurance();
+        this.total = this.calculateTotal();
 
     }
 
@@ -83,6 +83,27 @@ public class RentedVehicle extends Vehicle {
         }
 
         return discountedPrice;
+    }
+
+    /*
+     * This function is responsable for calculating total rental days of the car
+     */
+    public float calculateRental() {
+        return this.getRentalPerDay() * this.rentDays;
+    }
+
+    /*
+     * This function is responsable for calculating total insurance days of the car
+     */
+    public float calculateInsurance() {
+        return this.getInsurancePerDay() * this.rentDays;
+    }
+
+    /*
+     * This function is responsable for calculating total price for renting the car
+     */
+    public float calculateTotal() {
+        return this.discountedPrice + this.insurance + this.getServiceFee();
     }
 
     public String getPickUpDate() {

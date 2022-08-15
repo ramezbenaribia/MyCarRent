@@ -1,5 +1,7 @@
 package com.myCar;
 
+import java.util.Date;
+
 /**
  * The Main class is the entry point of the sample console program.
  */
