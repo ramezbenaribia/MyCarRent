@@ -9,13 +9,13 @@ To run this project there is two options
 
 ## For the first Option we can run those commands in the terminal
 
-## To compile the project or our classes we can use this command
+### To compile the project or our classes we can use this command
 
 ```typescript
 javac ./src/main/java/com/myCar/*.java
 ```
 
-## To run the project we can use this command
+### To run the project we can use this command
 
 ```typescript
 java -cp ./src/main/java com.myCar.Main
@@ -23,13 +23,13 @@ java -cp ./src/main/java com.myCar.Main
 
 ## For the second Option we can run those commands in the terminal
 
-## To compile the project and build it we can use this command
+### To compile the project and build it we can use this command
 
 ```typescript
 mvn package
 ```
 
-## To run the project we can use this command
+### To run the project we can use this command
 
 ```typescript
 java -cp target/myCar-1.0-SNAPSHOT.jar com.myCar.Main
