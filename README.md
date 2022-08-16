@@ -12,7 +12,7 @@ To run this project there is two options
 ## To compile the project or our classes we can use this command
 
 ```typescript
-javac ./src/test/java/com/myCar/*.java
+javac ./src/main/java/com/myCar/*.java
 ```
 
 ## To run the project we can use this command
