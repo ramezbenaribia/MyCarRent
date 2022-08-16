@@ -100,6 +100,7 @@ public class MyCar {
 					break;
 				case '4':
 					exit = true;
+					System.exit(1);
 					break;
 				default:
 					System.out.println("Please select a valid menu option.");
@@ -133,17 +134,43 @@ public class MyCar {
 	 */
 	public void search() {
 		ArrayList<Vehicle> filteredVehicleList = new ArrayList<Vehicle>();
-
-		System.out.print("Please provide a brand: ");
-		String stringInput = readUserInput();
+		/* this is array is for the possible brands that our system contains */
+		ArrayList<String> vehicleBrandList = new ArrayList<String>();
 
 		for (int i = 0; i < this.vehicleListSize; i++) {
 			Vehicle vehicle = this.vehicleList.get(i);
-			String vehicleBrand = vehicle.getBrand();
-			if (vehicleBrand.equals(stringInput)) {
-				filteredVehicleList.add(vehicle);
+			if (!vehicleBrandList.contains(vehicle.getBrand())) {
+				vehicleBrandList.add(vehicle.getBrand());
 			}
 		}
+
+		System.out.print("Please provide a brand: ");
+
+		do {
+			String stringInput = readUserInput();
+			if (vehicleBrandList.contains(stringInput)) {
+				for (int i = 0; i < this.vehicleListSize; i++) {
+					Vehicle vehicle = this.vehicleList.get(i);
+					String vehicleBrand = vehicle.getBrand();
+					if (vehicleBrand.equals(stringInput)) {
+						filteredVehicleList.add(vehicle);
+					}
+				}
+				break;
+
+			} else {
+				System.out.println("Please select a valid brand. You can find below the possible options");
+				// When the user chose a non valid brand the program will list all possible
+				// brands
+				for (int i = 0; i < vehicleBrandList.size(); i++) {
+					String brand = vehicleBrandList.get(i);
+					System.out.println("- " + brand);
+				}
+				System.out.print("Brand: ");
+
+			}
+
+		} while (true);
 
 		System.out.println(banner + "\n" + "> Select from  matching list" + "\n" + banner);
 
@@ -209,6 +236,7 @@ public class MyCar {
 
 			} else if (choice == exitChoiceNumber) {
 				break;
+
 			} else {
 				System.out.println("Please select a valid menu option.");
 
@@ -284,7 +312,7 @@ public class MyCar {
 				this.rentCar(selectedVehicle);
 
 			} else if (choice == exitChoiceNumber) {
-				break;
+				this.run();
 			} else {
 				System.out.println("Please select a valid menu option.");
 			}
@@ -300,7 +328,6 @@ public class MyCar {
 
 		String pickUpDate;
 		String returnDate;
-		boolean exit = false;
 
 		System.out.println(banner + "\n" + ">  Provide dates" + "\n" + banner);
 		do {
@@ -333,13 +360,11 @@ public class MyCar {
 
 					break;
 				case 'N':
-					System.out.println(banner + "\n" + "> Select from  matching list" + "\n" + banner);
-					exit = true;
+					this.run();
 					break;
 
 				case 'n':
-					System.out.println(banner + "\n" + "> Select from  matching list" + "\n" + banner);
-					exit = true;
+					this.run();
 
 					break;
 				default:
@@ -347,7 +372,7 @@ public class MyCar {
 					break;
 			}
 
-		} while (!exit);
+		} while (true);
 
 	}
 
@@ -389,7 +414,7 @@ public class MyCar {
 			System.out.print("Please provide number of passengers: ");
 			clientPassengersChoice = readUserInput();
 
-		} while (!Validators.validateNumber(clientPassengersChoice));
+		} while (!Validators.validateNumber(clientPassengersChoice, vehicle.getSeatsNumber()));
 
 		vehicle.setClientPassengersChoice(clientPassengersChoice);
 		System.out.print("Confirm and pay (Y/N): ");
@@ -405,21 +430,17 @@ public class MyCar {
 					break;
 				case 'y':
 					this.printreceipt(vehicle);
-
 					break;
 				case 'N':
-					this.rentCar(vehicle);
-					break;
-
+					this.run();
 				case 'n':
-					this.rentCar(vehicle);
-					break;
+					this.run();
 				default:
 					System.out.println("Please select a valid menu option.");
 					break;
 			}
 
-		} while (!exit);
+		} while (true);
 
 	}
 

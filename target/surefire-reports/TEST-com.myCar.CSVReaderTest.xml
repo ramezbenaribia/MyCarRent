@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.myCar.CSVReaderTest" time="0.005" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="com.myCar.CSVReaderTest" time="0.034" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.16+8-post-Ubuntu-0ubuntu122.04"/>
@@ -43,7 +43,7 @@
     <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -60,5 +60,6 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.myCar.CSVReaderTest" name="shouldAnswerWithTrue" time="0.005"/>
+  <testcase classname="com.myCar.CSVReaderTest" name="test_readFunction_FileNotFound" time="0.012"/>
+  <testcase classname="com.myCar.CSVReaderTest" name="test_readFunction_validTest" time="0.022"/>
 </testsuite>

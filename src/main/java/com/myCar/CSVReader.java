@@ -29,10 +29,8 @@ public class CSVReader {
 
         } catch (NullPointerException e) {
             System.err.println("File is null.");
-            System.exit(1);
         } catch (FileNotFoundException e) {
             System.err.println("File not found.");
-            System.exit(1);
         }
         return lines;
     }

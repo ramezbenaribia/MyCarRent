@@ -7,18 +7,25 @@ import java.util.concurrent.TimeUnit;
 public class RentedVehicle extends Vehicle {
     public static final String delimiter = "/";
 
-    String pickUpDate;
-    String returnDate;
-    long rentDays;
-    float rental;
-    float discountedPrice;
-    float insurance;
-    float total;
-    String clientName;
-    String clientSurname;
-    String clientEmail;
-    String clientPassengersChoice;
+    private String pickUpDate;
+    private String returnDate;
+    private long rentDays;
+    private float rental;
+    private float discountedPrice;
+    private float insurance;
+    private float total;
+    private String clientName;
+    private String clientSurname;
+    private String clientEmail;
+    private String clientPassengersChoice;
 
+    /*
+     * This constructor of RentedVehicle must be given the vehicle to rent with the
+     * pickup date and return date
+     * the other attributes (like
+     * clientName,clientSurname,clientEmail,clientPassengersChoice)
+     * can be set after
+     */
     public RentedVehicle(Vehicle vehicle, String pickUpDate, String returnDate) {
         super(
                 vehicle.getVehicleID(),
