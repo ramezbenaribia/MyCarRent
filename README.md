@@ -41,13 +41,13 @@ java -cp target/myCar-1.0-SNAPSHOT.jar com.myCar.Main
 mvn test
 ```
 
-## To run a single test class like "ValidatorsTest" we can use this command
+### To run a single test class like "ValidatorsTest" we can use this command
 
 ```typescript
 mvn -Dtest=ValidatorsTest  test
 ```
 
-## To run a single test method test_validateDate_incorrectDate() from the test class ValidatorsTest we can use this command
+### To run a single test method test_validateDate_incorrectDate() from the test class ValidatorsTest we can use this command
 
 ```typescript
 mvn -Dtest=ValidatorsTest#test_validateDate_incorrectDate test
