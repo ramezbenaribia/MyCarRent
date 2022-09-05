@@ -10,18 +10,12 @@ import java.util.ArrayList;
 public class MyCar {
 	public static final String banner = new String(new char[100]).replace('\u0000', '-');;
 
-	private String name;
 	private ArrayList<Vehicle> vehicleList;
 	private int vehicleListSize;
 
-	public MyCar(String name) {
-		this.name = name;
+	public MyCar() {
 		this.vehicleList = new ArrayList<Vehicle>();
 		this.vehicleListSize = 0;
-	}
-
-	public String getName() {
-		return this.name;
 	}
 
 	public ArrayList<Vehicle> getVehicleList() {
