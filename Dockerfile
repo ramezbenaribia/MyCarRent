@@ -24,8 +24,5 @@ WORKDIR /myCarRent
 COPY --from=build /myCarRent/build/target/myCar-1.0-SNAPSHOT.jar ./target/myCar-1.0-SNAPSHOT.jar
 COPY Fleet.csv .
 
-CMD ["ls"]
-RUN ["echo", "ramez test"]
-
 # run jar
-# CMD java -cp target/myCar-1.0-SNAPSHOT.jar com.myCar.Main
+CMD java -cp target/myCar-1.0-SNAPSHOT.jar com.myCar.Main
