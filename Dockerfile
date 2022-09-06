@@ -11,6 +11,7 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 # copy your other files
 COPY ./src ./src
+COPY ./Fleet.csv ./Fleet.csv
 # compile the source code and package it in a jar file
 RUN mvn clean install -Dmaven.test.skip=true
 
@@ -20,8 +21,6 @@ RUN mvn clean install -Dmaven.test.skip=true
 FROM adoptopenjdk/openjdk11:jre-11.0.9_11-alpine
 # set deployment directory
 WORKDIR /myCarRent
-# make the necessary directories for the project
-RUN mkdir images resizedimages retrieve
 # copy over the built artifact from the maven image
 COPY --from=build /myCarRent/build/target/myCar-1.0-SNAPSHOT.jar ./target/myCar-1.0-SNAPSHOT.jar
 
