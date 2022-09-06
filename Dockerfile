@@ -22,7 +22,9 @@ FROM adoptopenjdk/openjdk11:jre-11.0.9_11-alpine
 WORKDIR /myCarRent
 # copy over the built artifact from the maven image
 COPY --from=build /myCarRent/build/target/myCar-1.0-SNAPSHOT.jar ./target/myCar-1.0-SNAPSHOT.jar
-COPY ./Fleet.csv ./Fleet.csv
+COPY ./Fleet.csv .
+RUN ["ls"]
+RUN ["echo", "ramez test"]
 
 # run jar
 CMD java -cp target/myCar-1.0-SNAPSHOT.jar com.myCar.Main
